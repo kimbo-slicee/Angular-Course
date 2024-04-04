@@ -1,4 +1,4 @@
-# Angular <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg" width="50px" height="50px" style="position:relative; bottom: -20px"   /> Course 👨‍🏫 For Beginners 🐐
+# Angular <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg" width="50px" height="50px" style="position:relative; bottom: -10px"   /> Course 👨‍🏫 For Beginners 🐐
 
 [//]: # (<p> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original-wordmark.svg" /></p>)
 
