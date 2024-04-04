@@ -1,4 +1,4 @@
-# Angular <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg" width="50px" height="30px" style="position:relative; bottom: -12px"   /> Course 👨‍🏫 For Beginners 🐐
+# Angular <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg" width="50px" height="50px" style="position:relative; bottom: -12px"   /> Course 👨‍🏫 For Beginners 🐐
 
 [//]: # (<p> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original-wordmark.svg" /></p>)
 
@@ -9,7 +9,7 @@
 ![''](https://img.shields.io/badge/Wanted-Wanted?style=plastic&label=%F0%9F%91%82%20Feedback&labelColor=%20rgb(255%2C%20105%2C%20180)
 )
 
-# What 🤔 is  Angular <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg" width="50px" height="30px" style="position:relative; bottom: -12px"   />
+# What 🤔 is  Angular <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg" width="50px" height="50px" style="position:relative; bottom: -10px"   />
 <p>Angular is a JavaScript <span style="color: gold"> FrameWork</span>
 which allows us to create <span style="color: gold"> Single page Applications</span>(SAP).<br>
 <span style="font-weight: bold">what is A FrameWork  📌</span>   </br>
