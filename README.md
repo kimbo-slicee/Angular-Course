@@ -20,25 +20,35 @@ which otherwise we would have to write from scratch by our own </br>
 A single page application is a web application,which has only one HTML page. When we 
 navigate around , only the content of that page changes . the page itself never changes
 Advantage of SAP.
-
->Since we are using JavaScript to change the content of the page it is much Faster , 
->Here we are not reaching out to the server to request a new place of HTML data every time we navigate to a different URL
+Since we are using JavaScript to change the content of the page it is much Faster , 
+Here we are not reaching out to the server to request a new place of HTML data every time we navigate to a different URL
 </p>
 
-# why we're using angular framework 
+### why we're using angular framework 
 Limitation f JavaScript /JQuery
 - Vanilla JavaScript or jQuery code becomes hard to maintain and we will need a way to properly structure our apllication
 - A lot of applications built using vanilla JavaScript or JQuery is hard to test 
-- There are some functionalities which we will have to write from scratch when using JavaScript/JQuery 
-
-# Advantage of using Angular ✅
+- There are some functionalities which we will have to write from scratch when using JavaScript/JQuery
+### Advantage of using Angular ✅
 - Angular gives our apllication a clean and loosely coupled structure that is essay to understand and maintain   
 - it brings a lot of utility code which can be re-used in a lot of application Especially . when dealing withe user navigation and browser history 
 - Application build with Angular are more testable  
-# Angular versioning and releases
-- Angular Js Was not designed with the need today application 
+### Angular versioning and releases
+<p> AngularJS is the first version of the Angular framework,
+while Angular refers to the newer versions (Angular 2 and above). AngularJS is a JavaScript-based framework, 
+while Angular uses TypeScript, a statically typed superset of JavaScript. 
+Angular provides improved performance, scalability, and features compared to AngularJS.</p>
 
-# Angular architecture patterns
+### Setup environment to work with angular
+> **1: Install Node.js**
+> *Node.js is an open-source, cross-platform JavaScript runtime environment that allows developers to run JavaScript code outside a web browser. It is built on Chrome's V8 JavaScript engine and is designed for executing server-side scripts. 
+> Node.js enables developers to use JavaScript for server-side scripting, creating command-line tools, and building back-end applications, making it a popular choice for building scalable and high-performance web applications*
+>> **2:Install npm (Node Package Manager)**
+>> *is a package manager for the Node.js runtime environment. It is the default package manager for Node.js and is bundled with it. npm allows developers to easily install, share, and manage Node.js modules and libraries, making it easier to build and share JavaScript code*
+>>> **3: Install command-line interface (CLI)**
+>>> *is a text-based user interface for interacting with a computer system or software application. It allows users to enter commands using a keyboard, and the system or application will execute those commands and return the results in text form. CLIs are commonly used in software development, system administration, and network administration. They provide a powerful and flexible way to interact with complex systems and automate tasks* 
+
+### Angular architecture patterns
 Angular architecture patterns refer to the various design approaches and best practices for structuring Angular applications to achieve modularity, scalability, maintainability, and performance. Here are some common Angular architecture patterns
 <details> 
 <summary>Component-Based Architecture:</summary> 
@@ -90,15 +100,27 @@ Angular provides built-in features like HttpInterceptor for intercepting HTTP re
 <details>
 <summary>Testing</summary>
 Writing tests is crucial for ensuring the reliability and maintainability of Angular applications.
-Angular provides support for various types of testing, including unit tests, integration tests, and end-to-end tests using tools like Jasmine, Karma, Protractor, and Angular Testing Library.
+Angular provides support for various types of testing, including unit tests, integration tests,
+and end-to-end tests using tools like Jasmine, Karma, Protractor, and Angular Testing Library.
 </details>
 
+### Angular files and folder structure
+!["Angular_Folders"](src/assets/Angular%20files%20and%20folder%20structure.png)
+When you build an Angular application, the Angular CLI (Command Line Interface) or other build tools generate several files that are included in the index.html file during runtime. Let's go through the files you mentioned:
 
-
-> **Sir Charles Antony Richard Hoare**
->> *“I call it my billion-dollar mistake.
-It was the invention of the null reference in 1965.
-At that time, I was designing the first comprehensive type system for references in an object oriented language ([ALGOL W](https://en.wikipedia.org/wiki/ALGOL_W)).
-My goal was to ensure that all use of references should be absolutely safe, with checking performed automatically by the compiler.
-But I couldn't resist the temptation to put in a null reference, simply because it was so easy to implement. This has led to innumerable errors, vulnerabilities, and system crashes, 
-> which have probably caused a billion dollars of pain and damage in the last forty years.”*
+- runtime.js: This file contains the code necessary for bootstrapping and running the Angular application at runtime. It includes the runtime environment and Angular's runtime compiler.
+- polyfills.js: This file contains polyfills, which are code snippets that provide modern functionality on older browsers that may not support certain features. Angular applications often include polyfills to ensure compatibility with a wide range of browsers.
+- styles.js: This file typically includes the styles (CSS) of your Angular application. It contains the compiled styles from your components and global styles.
+- vendor.js: This file contains the code from third-party libraries and dependencies used by your Angular application. It includes the Angular framework itself and any other external modules or libraries.
+- main.js: This is the main entry point of your Angular application. It usually includes the code responsible for bootstrapping the Angular module, setting up the application environment, and initializing the component tree.
+###  Bootstrapping Angular Application
+In Angular, bootstrapping refers to the process of initializing and running an Angular application. 
+It involves loading the root module of the application which mostly is app.module.ts and then compiling and launching the component tree.
+In other words when an Angular application is started, the Angular framework reads the main.ts file, which contains the bootstrap code, and it loads the specified module (AppModule).
+The framework then processes the metadata defined in AppModule and initializes the application accordingly. 
+The main file responsible for bootstrapping an Angular application is typically named main.ts or main.js.
+>**Note: 📌**
+> Angular Project: Angular CLI saves the compile Angular application in the memory 
+> and directly start it.
+> ng serve: If we make any changes to our Angular app,Angular CLI will recompile and update the file 
+> Webpack: Angular CLI uses Webpack to travers through our Angular app and it bundles js and other files into one or more bundles then Angular CLI also injects the bundled JavaScript and CSS files in the index.html 
