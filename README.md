@@ -46,8 +46,8 @@ Angular provides improved performance, scalability, and features compared to Ang
 ](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)**
 >> *is a package manager for the Node.js runtime environment. It is the default package manager for Node.js and is bundled with it. npm allows developers to easily install, share, and manage Node.js modules and libraries, making it easier to build and share JavaScript code*
 >>> **3: Install command-line interface [AngularCLI](https://angular.io/cli)**
->>> *is a text-based user interface for interacting with a computer system or software application. It allows users to enter commands using a keyboard, and the system or application will execute those commands and return the results in text form. CLIs are commonly used in software development, system administration, and network administration. They provide a powerful and flexible way to interact with complex systems and automate tasks* 
-
+>>> *is a text-based user interface for interacting with a computer system or software application. It allows users to enter commands using a keyboard, and the system or application will execute those commands and return the results in text form. CLIs are commonly used in software development, system administration, and network administration.
+> They provide a powerful and flexible way to interact with complex systems and automate tasks*
 ### Angular architecture patterns
 Angular architecture patterns refer to the various design approaches and best practices for structuring Angular applications to achieve modularity, scalability, maintainability, and performance. Here are some common Angular architecture patterns
 <details> 
@@ -104,6 +104,11 @@ Angular provides support for various types of testing, including unit tests, int
 and end-to-end tests using tools like Jasmine, Karma, Protractor, and Angular Testing Library.
 </details>
 
+### Create a New Angular Project
+```angular2html
+ng new my-angular-app
+
+```
 ### Angular files and folder structure
 !["Angular_Folders"](src/assets/Angular%20files%20and%20folder%20structure.png)
 When you build an Angular application, the Angular CLI (Command Line Interface) or other build tools generate several files that are included in the index.html file during runtime. 
@@ -174,4 +179,21 @@ import { FeatureComponent } from './feature.component';
 })
 export class FeatureModule { }
 ```
-### Angular Component 
+### Angular Component
+Angular is a component-based JavaScript Framework 
+for building Client side App Components are the main 
+building blocks for Angular applications. 
+Component is a piece of user InterFace An Angular application is essentially a tree of Component 
+Create Component without angular CLI :
+- create TypeScript class and export it
+- Decorate the class withe @Component decorator 
+- Declare the class in the main module file 
+Creat component with Angular cli 
+```
+ng generate component Component-Name
+```
+>**Note:** Angular components are a subset of directives, always associated with a template
+
+
+
+
