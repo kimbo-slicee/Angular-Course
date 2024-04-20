@@ -180,20 +180,38 @@ import { FeatureComponent } from './feature.component';
 export class FeatureModule { }
 ```
 ### Angular Component
-Angular is a component-based JavaScript Framework 
-for building Client side App Components are the main 
-building blocks for Angular applications. 
-Component is a piece of user InterFace An Angular application is essentially a tree of Component 
-Create Component without angular CLI :
+Angular is a component-based JavaScript Framework for building Client side App Components are the main building blocks for Angular applications. 
+Component is a piece of user InterFace An Angular application is essentially a tree of Component the component can interact withe view Template
+thanks to Data Angular Data 📊 Binding 🖇 Concept.
+<br>
+**Create Component without angular CLI:**
 - create TypeScript class and export it
-- Decorate the class withe @Component decorator 
-- Declare the class in the main module file 
-Creat component with Angular cli 
+- Decorate the class withe @Component decorator and provide decorator Object Example ```{selector:"app-compoenent",
+  selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'}```
+- Declare 📢 the Class in the main Module File <br>
+**Creat component with Angular cli:**
 ```
 ng generate component Component-Name
 ```
+**Types of Component Selectors:**
+- HtML-Tag : Selector === "component-Name"
+- Attribute-Tag: Selector === "[component-Name]" in case of using this component as a [directives](directive) attribute
+- Css-class or Css-id: selector === ".component-Name"or "#component-Name" <br>
 >**Note:** Angular components are a subset of directives, always associated with a template
 
+### What Is 🤔 Angular Data 📊 Binding 🖇 ?
+There are various ways in which we can display data on the view. 
+The process of displaying this data is data binding. Angular data binding is an essential and powerful aspect of software development.
+It defines the communication between a component and its views. Data binding brings dynamism and interactivity to applications.
 
-
-
+| Types of Data Binding | Description                                                                                                                                                                                                                                                                                                             |             way of data binding |
+|:----------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------:|
+| Interpolation Binding | Interpolation is a procedure that allows the user to bind a value to the user interface element. Interpolation binds the data one-way, which means that data moves in one direction from the components to HTML elements.                                                                                               |                         One-Way |
+| Property Binding      | Property binding is a one-way data binding mechanism that allows you to set the properties for HTML elements. It involves updating a property value in the component and binding the value to an HTML element in the same view.                                                                                         |                         One_way |
+| Event Binding         | Event binding type is when information flows from the view to the component when an event is triggered. The event could be a mouse click or keypress. The view sends the data to update the component. Unsurprisingly,it is the exact opposite of property binding, where the data goes from the component to the view. |                         One_way |
+| ngModel               | As the name suggests, two-way binding is a mechanism where data flows from the component to the view and back. This binding ensures that the component and view are always in sync ngModule is the combination between propriety biding and event bundling                                                              |            Two-way Data Binding |
+ 
