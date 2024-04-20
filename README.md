@@ -110,14 +110,13 @@ ng new my-angular-app
 
 ```
 ### Angular files and folder structure
-!["Angular_Folders"](src/assets/Angular%20files%20and%20folder%20structure.png)
 When you build an Angular application, the Angular CLI (Command Line Interface) or other build tools generate several files that are included in the index.html file during runtime. 
-Let's go through the files you mentioned:
-- runtime.js: This file contains the code necessary for bootstrapping and running the Angular application at runtime. It includes the runtime environment and Angular's runtime compiler.
-- polyfills.js: This file contains polyfills, which are code snippets that provide modern functionality on older browsers that may not support certain features. Angular applications often include polyfills to ensure compatibility with a wide range of browsers.
-- styles.js: This file typically includes the styles (CSS) of your Angular application. It contains the compiled styles from your components and global styles.
-- vendor.js: This file contains the code from third-party libraries and dependencies used by your Angular application. It includes the Angular framework itself and any other external modules or libraries.
-- main.js: This is the main entry point of your Angular application. It usually includes the code responsible for bootstrapping the Angular module, setting up the application environment, and initializing the component tree.
+>Let's go through the files you mentioned:
+>- runtime.js: This file contains the code necessary for bootstrapping and running the Angular application at runtime. It includes the runtime environment and Angular's runtime compiler.
+>- polyfills.js: This file contains polyfills, which are code snippets that provide modern functionality on older browsers that may not support certain features. Angular applications often include polyfills to ensure compatibility with a wide range of browsers.
+>- styles.js: This file typically includes the styles (CSS) of your Angular application. It contains the compiled styles from your components and global styles.
+>- vendor.js: This file contains the code from third-party libraries and dependencies used by your Angular application. It includes the Angular framework itself and any other external modules or libraries.
+>- main.js: This is the main entry point of your Angular application. It usually includes the code responsible for bootstrapping the Angular module, setting up the application environment, and initializing the component tree.
 ###  Bootstrapping Angular Application
 In Angular, bootstrapping refers to the process of initializing 🚀 and running an Angular application. 
 It involves loading 💱 the root module of the application which mostly is app.module.ts and then compiling and launching the component tree.
@@ -159,7 +158,8 @@ import { AppComponent } from './app.component';
 export class AppModule { }
 ```
 **Feature Modules**: These are additional modules created to encapsulate specific features or functionalities of the application. 
-Feature modules are used to group related [components](README.md), [directives](), [pipes](), and [services](). They help in making the application modular and maintainable by dividing it into smaller, manageable pieces.
+Feature modules are used to group related [components](README.md), [directives](), [pipes](), and [services]().
+They help in making the application modular and maintainable by dividing it into smaller, manageable pieces.
 ```angular
 // feature.module.ts (Feature Module)
 import { NgModule } from '@angular/core';
@@ -185,14 +185,15 @@ Component is a piece of user InterFace An Angular application is essentially a t
 thanks to Data Angular Data 📊 Binding 🖇 Concept.
 <br>
 **Create Component without angular CLI:**
-- create TypeScript class and export it
-- Decorate the class withe @Component decorator and provide decorator Object Example ```{selector:"app-compoenent",
+>- create TypeScript class and export it
+>- Decorate the class withe @Component decorator and provide decorator Object Example ```{selector:"app-compoenent",
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'}```
-- Declare 📢 the Class in the main Module File <br>
+>- Declare 📢 the Class in the main Module File <br>
+
 **Creat component with Angular cli:**
 ```
 ng generate component Component-Name
@@ -208,10 +209,63 @@ There are various ways in which we can display data on the view.
 The process of displaying this data is data binding. Angular data binding is an essential and powerful aspect of software development.
 It defines the communication between a component and its views. Data binding brings dynamism and interactivity to applications.
 
-| Types of Data Binding | Description                                                                                                                                                                                                                                                                                                             |             way of data binding |
-|:----------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------:|
-| Interpolation Binding | Interpolation is a procedure that allows the user to bind a value to the user interface element. Interpolation binds the data one-way, which means that data moves in one direction from the components to HTML elements.                                                                                               |                         One-Way |
-| Property Binding      | Property binding is a one-way data binding mechanism that allows you to set the properties for HTML elements. It involves updating a property value in the component and binding the value to an HTML element in the same view.                                                                                         |                         One_way |
-| Event Binding         | Event binding type is when information flows from the view to the component when an event is triggered. The event could be a mouse click or keypress. The view sends the data to update the component. Unsurprisingly,it is the exact opposite of property binding, where the data goes from the component to the view. |                         One_way |
-| ngModel               | As the name suggests, two-way binding is a mechanism where data flows from the component to the view and back. This binding ensures that the component and view are always in sync ngModule is the combination between propriety biding and event bundling                                                              |            Two-way Data Binding |
+| Types of Data Binding | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |                 way of data binding |
+|:----------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------:|
+| Interpolation Binding | Interpolation is a procedure that allows the user to bind a value to the user interface element. Interpolation binds the data one-way, which means that data moves in one direction from the components to HTML elements.                                                                                                                                                                                                                                                           |                 One-WayData Binding |
+| Property Binding      | Property binding is a one-way data binding mechanism that allows you to set the properties for HTML elements. It involves updating a property value in the component and binding the value to an HTML element in the same view.                                                                                                                                                                                                                                                     |                One_way Data Binding |
+| Event Binding         | Event binding type is when information flows from the view to the component when an event is triggered. The event could be a mouse click or keypress. The view sends the data to update the component. Unsurprisingly,it is the exact opposite of property binding, where the data goes from the component to the view.                                                                                                                                                             |                One_way Data Binding |
+| Attribute Binding     | Attribute binding in Angular helps you bind to HTML attributes of elements in your template. This can be useful when you want to dynamically update the appearance or behavior of an element based on some condition.                                                                                                                                                                                                                                                               |                One_way Data Binding |
+| ngModel               | The ngModel directive makes this two-way data binding possible.When you use the ngModel directive, you specify a property of the scope as the value of the directive. This tells Angular to create a two-way binding between the property and the input control. Any changes to the control are automatically reflected in the model, and any changes to the model are automatically reflected in the contro.ngModel is the combination between propriety biding and event bundling | Two-way Data Binding Dat~~a Binding |
  
+### Angular Directives ⏩
+In Angular, a directive is a class with a @Directive decorator. 
+Directives add behavior to elements in the DOM (Document Object Model). 
+They can modify the appearance or behavior of a DOM element, component, or another directive.<br>
+>There are three types of directives in Angular:
+>- **Component Directives:** These are the most common directives in Angular. They are directives with a template. 
+When Angular encounters a component directive in the HTML, it renders the component along with its template.
+>- **Attribute Directives:** These directives change the behavior or appearance of an element, component, or another directive. They are used as attributes within HTML tags.
+>- **Structural Directives:** These directives change the DOM layout by adding or removing elements. They are preceded by an asterisk (*) in the HTML. 
+>>**Note📌:** Angular provides some built-in directives like *ngIf, *ngFor, and *ngSwitchCase, but you can also create custom directives to encapsulate and reuse behavior across your application. 
+##### how to create your own directive using angular CLI 
+To create a custom directive in Angular, you can use the @Directive decorator. Here's a step-by-step guide to creating a custom directive:
+1-Create a new directive using the Angular CLI:
+```
+ng generate directive myDirective
+```
+2-Define the directive:<br>
+```
+import { Directive, ElementRef, HostListener } from '@angular/core';
+
+@Directive({
+  selector: '[appMyDirective]'
+})
+export class MyDirectiveDirective {
+
+  constructor(private el: ElementRef) { }
+
+  @HostListener('mouseenter') onMouseEnter() {
+    this.highlight('yellow');
+  }
+
+  @HostListener('mouseleave') onMouseLeave() {
+    this.highlight(null);
+  }
+
+  private highlight(color: string) {
+    this.el.nativeElement.style.backgroundColor = color;
+  }
+}
+```
+>In this example, the directive listens for mouse enter and mouse leave events on the host element and changes its background color accordingly.
+
+3-Use the directive:<br>
+You can now use the appMyDirective directive in any of your Angular components' templates.
+```angular2html
+<div appMyDirective>
+  Hover over me to see the effect
+</div>
+```
+4-Add the directive to your module:<br>
+Don't forget to add the directive to the declarations array of your module.
+### @Input & @Output : Custom Property Binding
