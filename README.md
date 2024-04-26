@@ -268,4 +268,104 @@ You can now use the appMyDirective directive in any of your Angular components' 
 ```
 4-Add the directive to your module:<br>
 Don't forget to add the directive to the declarations array of your module.
-### @Input & @Output : Custom Property Binding
+### @Input : Custom Property Binding
+Custom property Binding is when we bind properties of Component class to some TypeScript expression 
+@Input(): This decorator allows a parent
+component to pass data into a child component.
+When you use @Input() to decorate a property in 
+the child component, you make that property available
+for binding from the parent component's template.Example:<br>
+Child Component 
+```
+import {Component, Input} from '@angular/core';
+
+@Component({
+  selector: 'app-filter',
+  templateUrl: './filter.component.html',
+  styleUrl: './filter.component.css'
+})
+export class FilterComponent {
+@Input() all:number=0;
+@Input() inStack:number=0;
+@Input() outOfStuck:number=0;
+}
+```
+Parent Component 
+```
+import {Component} from '@angular/core'
+import {Product} from "../../../models/products.model";
+import {products} from "../../../models/ProducdsListe";
+@Component({
+  selector: 'app-products-list',
+  templateUrl: './products-list.component.html',
+  styleUrl: './products-list.component.css'
+})
+
+export class ProductsListComponent {
+  public productList:Product[]=products;
+  public products_list_size:number=this.productList.length;
+  public productInStaock:number=this.productList.filter(products=>products.is_in_inventory).length
+
+}
+```
+Parent template 
+```
+<div class="container">
+  <app-filter [all]="products_list_size" [inStack]="productInStaock" [outOfStuck]="products_list_size-productInStaock"  ></app-filter>
+  <div class="row">
+    <app-product *ngFor="let products of productList" [product]="products" class="col-md-4"></app-product>
+    </div>
+  </div>
+```
+### @Output: Custom Event Binding
+In Angular, @Output is a decorator used in a child component to emit events to its parent component. 
+It allows data to flow from the child component to the parent component.
+### Template Reference Variable
+A template reference variable is a variable which stores a reference to a DOM element Component or 
+Directive on which it is used 
+### ViewChild decorator in Angular
+The @ViewChild decorator is used to query and obtain a reference to DOM elements within a component. 
+It returns the first matching element. 
+The main difference between @ViewChild and template reference variables is that @ViewChild receive the 
+reference of the element when the class loaded for the first time. In the case of template references,
+we must use an event to receive the ref element.<br>
+The @ViewChild decorator takes two properties:
+- The first property is the element reference and it mandatory.
+- The second optional argument of @ViewChild() is an object that takes two properties:
+1. read: Use it to read different tokens from the queried elements.
+2. static: Determines when the query is resolved. It takes two values, true or false.
+TRUE: resolves the query when the view is initialized (before the first change detection) for the first time.
+FALSE : resolves the query after every change detection Cycle .
+>**Note** 📌:
+> @ViewChild will always return the first matching element.
+> For example, when we use @ViewChild with multiple input elements, 
+> it will return the first element. Additionally, 
+> we can use @ViewChild to pass the reference of the instance components, not only DOM elements.
+
+```
+  Example:
+  @ViewChild(ComponentName or elementRef )properyName!:type;
+```
+### ViewChildren decorator
+It s same as @ViewChild but The viewChildren decorator is used to get a reference to the list of Dom element from the view template in the component class.
+it returns all the matching element
+ViewChildren return list of type  ![](QueryList<ElemementRef>) and the @ViewChildren is works after change detection
+resolve and the second parameter ViewChildren there is just read property not like 
+the view 
+```
+ @ViewChildren('inputElement')allInputs!:QueryList<ElementRef>
+    onSubmit() {
+    this.allInputs.forEach(ele=>{
+    console.log(ele.nativeElement)
+    })
+    }
+```
+
+
+
+
+
+
+
+
+
