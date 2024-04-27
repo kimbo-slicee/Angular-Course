@@ -323,9 +323,8 @@ It allows data to flow from the child component to the parent component.
 ### Template Reference Variable
 A template reference variable is a variable which stores a reference to a DOM element Component or 
 Directive on which it is used 
-### ViewChild decorator in Angular
-The @ViewChild decorator is used to query and obtain a reference to DOM elements within a component. 
-It returns the first matching element. 
+### @ViewChild decorator in Angular
+The @ViewChild decorator is used to query and obtain a reference to DOM elements within a component.It returns the first matching element. 
 The main difference between @ViewChild and template reference variables is that @ViewChild receive the 
 reference of the element when the class loaded for the first time. In the case of template references,
 we must use an event to receive the ref element.<br>
@@ -346,7 +345,7 @@ FALSE : resolves the query after every change detection Cycle .
   Example:
   @ViewChild(ComponentName or elementRef )properyName!:type;
 ```
-### ViewChildren decorator
+### @ViewChildren decorator
 It s same as @ViewChild but The viewChildren decorator is used to get a reference to the list of Dom element from the view template in the component class.
 it returns all the matching element
 ViewChildren return list of type  ![](QueryList<ElemementRef>) and the @ViewChildren is works after change detection
@@ -360,7 +359,31 @@ the view
     })
     }
 ```
-
+### ng-Templates
+the ng-template is an Angular element which wrap an HTML snippet .this HTML snippet 📎 acts and can be used
+Like a Template 🧾 and can be rendered in the DOM tree 🎄 and even we use this directive it will not be rendered directly in web page
+that's why we have to use structure directives like *ngIf or *ngFor or there's specificness struclturl rectifier call 
+ngTemplateOutlet directive and use the template reference variable for the ng-template<br>
+```angular2html
+<h1>Hello in my ReadMe</h1>
+<!--Note: this HTML will not rendered in the browser why ? -->
+<ng-template #ngTemplate>
+    <h3>I'm here to Help u 🙌</h3>
+    <P>If you can't explain it simply, you don't understand it well enough.</P>
+</ng-template>
+<div *ngTemplateOutlet="ngTemplate"><!--this ng-template will be rendered in this 👉 div --></div>
+```
+Use Cases of ![](ng-Templates) 
+```angular2html
+<div *ngIf="isLoggedIn; else loginTemplate">
+    <p>Welcome, {{ username }}!</p>
+</div>
+<ng-template #loginTemplate>
+    <h3> you need to Login First</h3>
+    <button class="" (click)="login()"  >Login🔐</button>
+</ng-template>
+```
+### Ng-Container 
 
 
 

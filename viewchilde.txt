@@ -1,10 +1,5 @@
-ViewChilde:
-viewChilde will returne allwase the firts matchin element for example when we use view childe in multipul inpute element 
-the  view childe wille returren the first element and we can also use veiw childe for passing the referance of the instance components not only dom elements.
-and the VeiwChilde take two propretyes the first it s the element referance
-the seconde optional argumanet of @ViewChild() it s an object that's take two propretys 
-1:read: use' t to read the different token from the queried elements 
-2:static: Determines when the query is resolved take to value true or False 
-True is when the view is initiallized (before the first chnage detection ) for 
-the first time
-False if you want it ti be resolved after every chnage detection  
+---ng-template in Angular 
+--ng-contaner: the ng-container is a special Angular element can hold structural directive without adding new element to the DOM  
+
+
+
