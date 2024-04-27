@@ -16,7 +16,7 @@ which allows us to create <span style="color: gold"> Single page Applications</s
 A FrameWork is like a platform for developing software it can have pre-defined classes
 and functions that can be re-used to add several functionalities,
 which otherwise we would have to write from scratch by our own </br> 
-**what is Single Page Application(SAP)** 📌</br>
+**what is Single Page 📄 Application(SAP)** 📌</br>
 A single page application is a web application,which has only one HTML page. When we 
 navigate around , only the content of that page changes . the page itself never changes
 Advantage of SAP.
@@ -373,7 +373,7 @@ ngTemplateOutlet directive and use the template reference variable for the ng-te
 </ng-template>
 <div *ngTemplateOutlet="ngTemplate"><!--this ng-template will be rendered in this 👉 div --></div>
 ```
-Use Cases of ![](ng-Templates) 
+Use Cases Example 👇
 ```angular2html
 <div *ngIf="isLoggedIn; else loginTemplate">
     <p>Welcome, {{ username }}!</p>
@@ -383,8 +383,21 @@ Use Cases of ![](ng-Templates)
     <button class="" (click)="login()"  >Login🔐</button>
 </ng-template>
 ```
-### Ng-Container 
+### ng-Container 
+The [ng-container](ng-container)
+In Angular, ng-container is a special element provided by Angular that allows you to group multiple elements together without actually creating an additional element in the DOM.
+It's a structural directive that is useful for situations where you need to apply structural directives like *ngIf, *ngFor, or *ngSwitch to multiple elements without adding an extra wrapper element.
+it s like fragment in React 
+```angular2html
+<h2>Learn Ng-template</h2>
+<ng-template #template>
+    <h3>this is a template</h3>
+    <p>this is an example paragraph to understand ng-template</p>
+</ng-template>
+<!--the most use Case of ng-template-->
+<ng-container *ngTemplateOutlet="template"></ng-container>
 
+```
 
 
 
