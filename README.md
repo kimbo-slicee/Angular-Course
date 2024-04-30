@@ -374,7 +374,7 @@ ngTemplateOutlet directive and use the template reference variable for the ng-te
 <div *ngTemplateOutlet="ngTemplate"><!--this ng-template will be rendered in this 👉 div --></div>
 ```
 Use Cases Example 👇
-```angular2html
+```
 <div *ngIf="isLoggedIn; else loginTemplate">
     <p>Welcome, {{ username }}!</p>
 </div>
@@ -387,7 +387,7 @@ Use Cases Example 👇
 The [ng-container](ng-container)
 In Angular, ng-container is a special element provided by Angular that allows you to group multiple elements together without actually creating an additional element in the DOM.
 It's a structural directive that is useful for situations where you need to apply structural directives like *ngIf, *ngFor, or *ngSwitch to multiple elements without adding an extra wrapper element.
-it s like fragment in React 
+it s like fragment in React. And the main idea of crating ng-container it s to allows us to use multiple structural directive without using a lot of divs
 ```angular2html
 <h2>Learn Ng-template</h2>
 <ng-template #template>
@@ -396,8 +396,52 @@ it s like fragment in React
 </ng-template>
 <!--the most use Case of ng-template-->
 <ng-container *ngTemplateOutlet="template"></ng-container>
-
 ```
+### ng-content
+The <ng-content> element specifies where to project content inside a component template.
+>>**Note:📌** when we use multiple ng-content all the content will replaced in the lase one so this why we need to add attribute select to ng-content to specify which element we want to replace 
+### ---@ContentChilde:  
+### ---@ContentChildren:
+The @ContentChildren decorator is used to access a reference of all the DOM elements , 
+Components or directives From the projected content in the child Component class based on a given selector
+### Component Lifecycle in Angular 
+When Angular encounters a component selector in the template 
+(e.g., <app-my-component></app-my-component>), 
+it first looks up the corresponding component class based on the selector name.
+Once found, Angular creates a new instance of that component class using the class constructor. 
+This constructor can be used to perform any initialization tasks required for the component to function, such as injecting dependencies.</br>
+**component Life Cycle**:  </br>
+1- When The Angular Application start,it first creates and renders the root component </br>
+2- Then it creates and renders its children and their children. in this way it forms a tree of components </br>
+3- Once Angular loads the Component,it starts the process of rendering the view To Do that it need to check the input properties evaluate the data bindings & expressions, render the projected content etc. </br>
+>**Note:📌**
+>When a constructor is called, by that time ,none of its input properties are updated and available to use 
+> When a constructor is called, by that time the child component of that component are not yet construed
+> Projected Contents are also not available by the time the constructor of a component
+### Lifecycle Hooks in Angular
+the Angular life cycle hooks are the methods that angular invokes on a directive or a component , as it creates,changes and destroys them<br>
+**Change Detection** in Angular is a mechanism by which,angular Keeps the view template is in sync with the component class <br>
+when change detection mechanism works ?
+- Whenever the @input property of a component changes
+- whenever a DOM event happens click or change
+- Whenever a Timer events happens using setTimeOUt()/setInterval()
+- Whenever an HTTP request is made 
+
+
+
+
+| Hooks                  |                                                                                                                                                                                          Description                                                                                                                                                                                          |  interFace Name |
+|:-----------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|----------------:|
+| ngOnchange             |                                        The ngOnChanges hooks get executed at the start, when a new component is created and its input bound properties are updated.the ngOnChenges Hook also gets executes everytime the input bound properties of the component change                                                                                                                       | **_OnChanges_** |
+| ngOnInit               |                                                      Angular raises ngOnInit hook after it creates the component and update it s input properties, this hook is raised after ngOnChanges.the ngOnInit Hook is fired once during the first change detection cycle.After that,if the input propery changes this hook does not gets called                                                       |    **_OnInit_** |
+| ngDoCheck              |                                                                                                                                                                                                                                                                                                                                                                                               |        And more |
+
+
+
+
+
+
+
 
 
 

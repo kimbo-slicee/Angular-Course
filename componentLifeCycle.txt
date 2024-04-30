@@ -1,0 +1,4 @@
+component Life Cycle:
+1- When The Angular Application start,it first creates and renders the root component
+2- Then it creates and renders its children and their children. in this way it forms a tree of components 
+3- Once Angular loads the Component , it starts the process of rendering the view To Do that it need to check the input properties evaluate the data bindings & expressions, render the projected content etc    
