@@ -11,20 +11,8 @@ import {FormsModule} from "@angular/forms";
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnChanges,OnInit{
+export class AppComponent {
     userName!:string;
-    constructor() {
-        console.log("constructor")
-    }
-    ngOnChanges(changes: SimpleChanges): void {
-        console.log("ngOnchange Change detction cycle is run ")
-    }
-
-    ngOnInit(): void {
-        console.log("ngOnInit")
-    }
-
-
     showName(el:HTMLInputElement) {
         this.userName=el.value;
     }

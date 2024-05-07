@@ -217,7 +217,7 @@ It defines the communication between a component and its views. Data binding bri
 | Attribute Binding     | Attribute binding in Angular helps you bind to HTML attributes of elements in your template. This can be useful when you want to dynamically update the appearance or behavior of an element based on some condition.                                                                                                                                                                                                                                                               |                One_way Data Binding |
 | ngModel               | The ngModel directive makes this two-way data binding possible.When you use the ngModel directive, you specify a property of the scope as the value of the directive. This tells Angular to create a two-way binding between the property and the input control. Any changes to the control are automatically reflected in the model, and any changes to the model are automatically reflected in the contro.ngModel is the combination between propriety biding and event bundling | Two-way Data Binding Dat~~a Binding |
  
-### Angular Directives ⏩
+### Angular Directives 
 In Angular, a directive is a class with a @Directive decorator. 
 Directives add behavior to elements in the DOM (Document Object Model). 
 They can modify the appearance or behavior of a DOM element, component, or another directive.<br>
@@ -238,7 +238,7 @@ ng generate directive myDirective
 import { Directive, ElementRef, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[appMyDirective]'
+  selector: '[ ]'
 })
 export class MyDirectiveDirective {
 
@@ -257,7 +257,7 @@ export class MyDirectiveDirective {
   }
 }
 ```
->In this example, the directive listens for mouse enter and mouse leave events on the host element and changes its background color accordingly.
+>**Note:📌** In this example, the directive listens for mouse enter and mouse leave events on the host element and changes its background color accordingly.
 
 3-Use the directive:<br>
 You can now use the appMyDirective directive in any of your Angular components' templates.
@@ -268,6 +268,7 @@ You can now use the appMyDirective directive in any of your Angular components' 
 ```
 4-Add the directive to your module:<br>
 Don't forget to add the directive to the declarations array of your module.
+
 ### @Input : Custom Property Binding
 Custom property Binding is when we bind properties of Component class to some TypeScript expression 
 @Input(): This decorator allows a parent
@@ -317,6 +318,7 @@ Parent template
     </div>
   </div>
 ```
+
 ### @Output: Custom Event Binding
 In Angular, @Output is a decorator used in a child component to emit events to its parent component. 
 It allows data to flow from the child component to the parent component.
@@ -425,19 +427,38 @@ when change detection mechanism works ?
 - Whenever the @input property of a component changes
 - whenever a DOM event happens click or change
 - Whenever a Timer events happens using setTimeOUt()/setInterval()
-- Whenever an HTTP request is made 
+- Whenever an HTTP request is made
+- 
+| Hooks                 |                                                                                                                                                                                                                                                                             Description                                                                                                                                                                                                                                                                              |          InterFace Name |
+|:----------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|------------------------:|
+| ngOnchange            |                                                                                                                                                                   The ngOnChanges hooks get executed at the start, when a new component is created and its input bound properties are updated.the ngOnChenges Hook also gets executes everytime the input bound properties of the component change                                                                                                                                                                   |           **OnChanges** |
+| ngOnInit              |                                                                                                                                          Angular raises ngOnInit hook after it creates the component and update it s input properties, this hook is raised after ngOnChanges.the ngOnInit Hook is fired once during the first change detection cycle.After that,if the input proper changes this hook does not gets called                                                                                                                                           |              **OnInit** |
+| ngDoCheck             |                                                                                                                                                                                                             Angular invokes ngDoCheck hook during every change detection cycle.This Hook is invoked even if there's no change in input bound properties                                                                                                                                                                                                              |             **DoCheck** |
+| ngAfterContentInit    |                                                                             The ngAfterContent lifecycle hook is called after the components projected content has been fully initialized.Angular Update the properties decorated with @ContentChild & @ContentChildren decorator just before this hook is raised.this lifecycle hook gets called only once,during the first change detection cycle. After that,if the projected content changes this lifecycle hook will not get called                                                                             |    **AfterContentInit** |
+| ngAfterContentChecked | The ngAfterContentChecked lifecycle hook is called during every change detection cycle after Angular has finished initializing and checking projected content. Angular raises this hook even if there is no projeted content in the component The ngAfterContentInit hook is Called after the projected content is initialized NgAfterContentChecked is called whenever the projected content is initialized , checked & update. <br/>**Note**:the ngAfterContentInit and ngAfterContentChecked are only hook Component these hooks are not available for directives | **AfterContentChecked** |
+| ngAfterViewInit       |  the ngAfterViewInit is Called after the Components View template and all its child Component View templates are fully initialized Angular also Updates the properties decorated @ViewChild and @ViewChildren before raising this hook. By the time hook gets called for a component, all the lifecycle hook methods of child components and directive are completely processed and child components are completely ready.<br/>**Note**:the ngAfterContentInit and ngAfterContentChecked are only hook Component these hooks are not available for directives        |       **AfterViewInit** |
+| ngAfterViewChecked    |                                                                                                                                                       Angular fires ngAfterViewChecked hook after it checks and updates the components View template and all it s child components view templates this hook is called during the first change detection cycle ,after that during every change detection cycle.                                                                                                                                                       |    **AfterViewChecked** |
+| ngOnDestroy           |                                                                                                                   angular fires NgOnDestroy lifeCycle hook just before the component or the directive is destroyed or removed from the DOM.<br/> *Note*:this Hook is the Create place to do some cleanup work like unsubscribe from am observable or dutch event handler etc ...,  as this hook is called right before the component is destroyed                                                                                                                    |           **OnDestroy** |
 
+>**Note📌**: from all this hooks theirs just four hooks that's we can use them in a directive class they are [NgOnChange,NgOnInit,NgDoCheck,ngOnDestroy] 
+### what is Renderer2 
+Allows us to manipulate the DOM without accessing the DOM directly,By providing a Layer of abstraction between the DOM element and component code 
+- Angular Keeps the component and the view in sync using templates . data binding and change detection etc .All of them are bypassed when we update the DOM directly 
+- the DOM manipulation works only in browser .You will not be able to use your app in other platform like web workers,servers for server-side rendering , desktop or mobile apps etc. where there is no browser   
+- The Dome APS's does not sanitize the data. hence it is possible to inject a script , thereby opening our app an easy target for XSS injection attacks  
+```
+export class BackgroundColorDirective implements OnInit{
 
+constructor (private elementRef:ElementRef,
+private rendererTwo:Renderer2) { }
 
+ngOnInit(): void {
+this.rendererTwo.setStyle(this.elementRef.nativeElement,'backgroundColor','black')
+}
 
-| Hooks                  |                                                                                                                                                                                          Description                                                                                                                                                                                          |  interFace Name |
-|:-----------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|----------------:|
-| ngOnchange             |                                        The ngOnChanges hooks get executed at the start, when a new component is created and its input bound properties are updated.the ngOnChenges Hook also gets executes everytime the input bound properties of the component change                                                                                                                       | **_OnChanges_** |
-| ngOnInit               |                                                      Angular raises ngOnInit hook after it creates the component and update it s input properties, this hook is raised after ngOnChanges.the ngOnInit Hook is fired once during the first change detection cycle.After that,if the input propery changes this hook does not gets called                                                       |    **_OnInit_** |
-| ngDoCheck              |                                                                                                                                                                                                                                                                                                                                                                                               |        And more |
-
-
-
+    }
+```
+### @HostListener in Angular  
 
 
 

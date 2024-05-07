@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {AfterContentInit, Component, ContentChildren, ElementRef, QueryList,} from '@angular/core';
 
 @Component({
   selector: 'app-child',
@@ -7,7 +7,8 @@ import {Component, Input} from '@angular/core';
   templateUrl: './child.component.html',
   styleUrl: './child.component.css'
 })
-export class ChildComponent {
-    @Input() some!: string;
+export class ChildComponent implements AfterContentInit{
+
+
 
 }
