@@ -1,19 +1,20 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {NgIf, NgTemplateOutlet} from "@angular/common";
-import {ParentComponent} from "./components/parent/parent.component";
-import {FormsModule} from "@angular/forms";
+import {ClassDirectiveDirective} from "./directive/class-directive.directive";
+import {NgStyle, NgSwitch, NgSwitchCase} from "@angular/common";
+import {StyleDirectiveDirective} from "./directive/style-directive.directive";
+import {NgifDirectiveDirective} from "./directive/ngif-directive.directive";
+import {NavBarComponent} from "./components/nav-bar/nav-bar.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-    imports: [RouterOutlet, NgTemplateOutlet, NgIf, ParentComponent, FormsModule],
+    imports: [RouterOutlet, ClassDirectiveDirective, NgStyle, StyleDirectiveDirective, NgifDirectiveDirective, NgSwitch, NgSwitchCase, NavBarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-    userName!:string;
-    showName(el:HTMLInputElement) {
-        this.userName=el.value;
-    }
+    switch:string="Contacts"
+
+
 }

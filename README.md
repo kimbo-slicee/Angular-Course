@@ -458,15 +458,32 @@ this.rendererTwo.setStyle(this.elementRef.nativeElement,'backgroundColor','black
 
     }
 ```
-### @HostListener in Angular  
+### @HostListener in Angular
+In Angular, HostListener is a decorator that's used to subscribe to events of the host element in the directive or component. It allows you to listen to events such as mouseenter, mouseleave, 
+### @HostBinding 
+The @HostBinding decorator binds a host elements property to a property of a directive or a component class 
+### What is Service in Angular
+In Angular, services are a way to organize and share code across different parts of your application.
+They are regular TypeScript classes with a specific purpose, such as fetching data from a server, logging, or managing application state.
+Services in Angular are usually singleton objects, meaning that there is only one instance of a service in the application.
+Services allow you to keep your components lean and focused on their specific tasks, while business logic, data manipulation,
+and communication with the server are handled by services<br>.
+**Advantages**
+- Services allows us to re-use a piece of code in multiple components wherever it is required . in this way we avoid repeating a piece of code 
+- it allows us to separate business logic From UI logic in a service class, IN this way it provides separation of concern
+- We are able to use untie testing easy to test ths business logic written in a service class separately without creating a component.Testing and debugging is easier with services   
+**How To create a Service**
 
-
-
-
-
-
-
-
-
-
+**What is Dependency Injection**
+A dependency is a relationship between two software components where
+one component relies on the other component to work properly<br> 
+Why we need Dependency injection 🙄
+- without dependency injection a class is tightly coupled with it s dependency this make a class non-flexible Any change in dependency force us to change the class implementation 
+- it makes testing of class difficult. Because if the dependency changes the class has to change. And when the class changes the unit test mock code also has to change                  
+- Dependency injection or DI Keep the code flexible , testable , and mutable
+- Classes can inherit external logic without knowing how to create it 
+- Dependency injection benefits components , Directive and pipe
+> **Note 📌** When we provide a service on multiple components each component get it s own instance of that service <br>
+> **Dependency Override** : When we provide a dependency on a component and also provide a dependency on it s child component . child component dependency instance will override it s parent component dependency instance Child component provider override the instance if parent component provider <br>
+> **Model injector**: We can also inject a service from Module class in that Case Same instance of the dependency will be available throughout the Angular application.In this way we implement singleton pattern where a single instance is shared throughout the application  
 
