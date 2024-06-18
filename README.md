@@ -446,7 +446,7 @@ Allows us to manipulate the DOM without accessing the DOM directly,By providing 
 - Angular Keeps the component and the view in sync using templates . data binding and change detection etc .All of them are bypassed when we update the DOM directly 
 - the DOM manipulation works only in browser .You will not be able to use your app in other platform like web workers,servers for server-side rendering , desktop or mobile apps etc. where there is no browser   
 - The Dome APS's does not sanitize the data. hence it is possible to inject a script , thereby opening our app an easy target for XSS injection attacks  
-```
+``` 
 export class BackgroundColorDirective implements OnInit{
 
 constructor (private elementRef:ElementRef,
@@ -473,7 +473,10 @@ and communication with the server are handled by services<br>.
 - it allows us to separate business logic From UI logic in a service class, IN this way it provides separation of concern
 - We are able to use untie testing easy to test ths business logic written in a service class separately without creating a component.Testing and debugging is easier with services   
 **How To create a Service**
-
+using angular XLI just wright this commend 
+```
+ ng g service name-Of-service
+```
 **What is Dependency Injection**
 A dependency is a relationship between two software components where
 one component relies on the other component to work properly<br> 
@@ -486,4 +489,131 @@ Why we need Dependency injection 🙄
 > **Note 📌** When we provide a service on multiple components each component get it s own instance of that service <br>
 > **Dependency Override** : When we provide a dependency on a component and also provide a dependency on it s child component . child component dependency instance will override it s parent component dependency instance Child component provider override the instance if parent component provider <br>
 > **Model injector**: We can also inject a service from Module class in that Case Same instance of the dependency will be available throughout the Angular application.In this way we implement singleton pattern where a single instance is shared throughout the application  
+
+Injecting Service into Another Service
+if we want to inject service in another service we use @injectable decoratoc
+Angular Injection Token
+in the providers array we can use this syntax to provide services
+[{ provide:UserService|| 'USER-SERVICE' ,useClass:UserService }]
+@inject('USER-SERVICE')
+
+### welcome 👋 to Promises and Observables & RXS 👇
+An Observable is a wrapper around asynchronous data. We use an observable to handle asynchronous data<br>
+An Observable is a function that convert the ordinary data stream into an observable one You can think of Observable as a wrapper around the ordinary Data stream 
+what is synchronous programming 🤔
+JavaScript is a single-threaded programming language that means that in javaScript the code executed line by line in which they are defined
+>**Note📌** the async Code execute in the background without blocking the Main thread.
+
+Promise vs Observable
+- Promise cannot handel Stream fo async Data. it always returns a single Value.On the other Hand we can use observables to handle stream of async data . it can return multiple values
+- A Promise Will Certainly return a data even if no Code is using that data Whereas an observable Will return a data only if someone is going to use that data 
+- A promise is native to javaScript programing .Whereas is not native To JavaScript and it is provided BY "RXJS" library 
+**What is RXJS**
+#####  RxJS of() & from() Operator
+the of operator creates an observable from the arguments that we pass any number of arguments to of operator
+Each argument is emitted separately one after other.it send the complete signal at the end
+
+#### What is Routing
+Routing allows us to navigate from one part of our application to another part. In Angular, we're using routing we can move from view of one component to view of another component.
+
+### How to define Routes:
+- Create a new route using Routes array and define some route objects inside that array
+  Register the route using RouterModule.forRoot(routeName)
+- use<router-outlet> where you want to render the view of specified route component
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#### Wild Card Route
+A wild card route is that route which matches every path, in angular the wild card route is specified using ** signs
+**Note📌**A wild card route must be specified at the end of all the defined routes.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Navigation Links:
+
+**RouterLink Directive**:
+The RouterLink is a directive that binds the HTML element to a Route. When the HTML element on which we have used the RouterLink is clicked, it will result in navigation to that Route
+note:RouterLink directive is an attribute directive and we can also pass additional parameters to it.
+
+**RouterLinkActive Directive** :
+The RouterLinkActive is a directive for adding or removing
+classes from an HTML element that is bound to RouteLink
+Using RouterLinkActive directive, We can Toggle CSS classes for active route link based on the current router state.
+the main ue case of routerLinkActive directive is so highlight which route is currently active.
+**Note 📌** : When a child route is active, then all the parent routes are also marked as active.in that case, routerLinkActiveOptions directive we can set some options for routerLinkActive directive.One of the Options we canset is the exact property which tells how to match the route path for styling the active route.
+[RouterActiveOptions]="{exact:true}"
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Absolute Path 📌 :
+When we use a slash ("/") before the router, in that case it uses absolute path and the path is directly appended to root url
+<a routerLink="/About">About</a>
+URL :localhost:2400/About
+
+Relative Path 📌 :
+When we do not use a slash ("/") before the router link path , in that case it
+uses relative and the path is appended to the currently active route.
+for example, let say the currently active route us About. and a link is defined in About page to go home as shown below. if that link is clicked the path will be appended to currently active route
+**Note 📌** When we use a dot &  a slash ("./") before the router link path, in that case it uses relative path and the path is appended to the currently active route.
+and when we use ("../") before the router link path, in the case it will move one level up and the path will be appended to the parent path
+-------------------------------------------------------------------------------------------------------------------------------
+Navigating between Routes Programmatically:
+**navigate()Methode**
+Using navigate() method we can navigate from one route to another programmaticaly.the navigate methode takes an array as an argument and in that
+array we can specify route segments
+Syntax: this.router.navigate(["pathOne","pathTwo",parmeter])
+**NavigateByUrl**
+Using navigateByUrl() methode, takes a string value as an argument and
+that string value should contain all the route segments
+Syntax: this.router.navigateByURL('path")
+Note📌: in navigate()Methode or NavigateByUrl by default it s absloout path and  we cant change that to reletive path just in casse of navigate method by adding object
+{relativeTo:current Path}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**Route Parmetere**
+the route parameters are the dynamic part of  the route whose value can chnage
+these parameters provides a way to pass extra information to a given route  
+SnapShot Proerty
+the snapshot property contains the current value of the ruote. if the value of the route parameter change after we have retrived the value of route,that chnage will not get captured. By subscribing to the paramMap observable(or to params observable), you will get a notifaction when the value change, Hence , you can retrieve the latest value of the parameter and updated the component accordingly
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**Route Parameter vs Query String**
+Route parameters are required and it is used by angular router to determine the route , Route Parameters are are part of route definition
+Query string are optional data which we pass through route. if the query parameter is missing in the URL , then it will not stop angular from navigating to the route.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**What is Fragment in a route**:
+A fragment in a route is a link which jumps to a section or content in HTML page , which contains the ID mentioned in the fragment.A fragment comes after a # sign
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**Route Module**:
+file that holde all the route of our application
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[1]: What is a Route Guard
+Allowing the users to navigate to all partes of the application in not a good idea. And We need to restrict the use accessing certain 
+routes, Until the user performs a specific action like login to application .So you can use route guard for following scenario 's:
+- Restrict a use from accessing a route.
+- Ask user to save changes before moving away from view
+- Validating the route parameters before navigating to the route.
+- Fetch some data before you display component view of a route.<br>
+  **Type of Route Guard**
+  1. CanActivate:
+  this Guard decides if a route can be accessed by a user or not. This guard is useful in the circumstance where the user in not authorized to navigate to the target component
+  2. CanActivateChild:
+  this Guard decides, if a user can leave a route or not. the Guard is useful in case where the user might have some pending changes, which not saved.
+  3. CanDeactivate:
+  this guard determines whether route can be activated or not<br>
+  4. 4Resolve:<br>
+  this guard delays the activation of the route until some tasks are complete you can use the guard to pre-fetch the data from the backend API, before activating the route:
+  CanLoad The Guard prevents the loading of the lazy loaded Module. We
+  generally use this guard when we do not want to unauthorized user to be able to even see the source code of the module.<br>
+
+   **Route Guard Implementation** <br>
+  -Angular 14 And Lower Versions:<br>
+  1. Create a service which inherits from specific route guard InterFace
+  2. implement the method provided by that route guard interface
+  3. Return a boolean value / data from  that method.
+  4. Assign the service to route guard property of route object<br>
+
+   **Angular 15 and Higher Version**<br>
+  1. Creat a function which should return a boolean value
+  2. Assign that function to specific route guard property of route object
+-----------------------------------------------------------------------------------------------------------------------
+#### Router Events 
+In Angular, When we navigate from one route to another route , 
+there is a sequence of navigation events that gets triggered by angular router, 
+We can subscribe to these events and execute some logic if we want.
+
+
+
 
